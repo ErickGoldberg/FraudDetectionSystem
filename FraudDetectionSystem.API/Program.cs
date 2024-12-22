@@ -1,4 +1,13 @@
+using FraudDetectionSystem.Infrastructure.Configurations;
+using FraudDetectionSystem.Infrastructure.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure DynamoDb
+builder.Services.Configure<DynamoDbConfiguration>(
+    builder.Configuration.GetSection("AWS:DynamoDbConfiguration")
+);
+builder.Services.AddDynamoDb();
 
 // Add services to the container.
 
